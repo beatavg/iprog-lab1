@@ -1,90 +1,7 @@
 //DinnerModel Object constructor
 var DinnerModel = function() {
- 
-	//TODO Lab 1 implement the data structure that will hold number of guest
-	// and selected dishes for the dinner menu
 
-
-	this.setNumberOfGuests = function(num) {
-		//TODO Lab 1
-	}
-	
-	this.getNumberOfGuests = function() {
-		//TODO Lab 1
-	}
-
-	//Returns the dish that is on the menu for selected type 
-	this.getSelectedDish = function(type) {
-		//TODO Lab 1
-	}
-
-	//Returns all the dishes on the menu.
-	this.getFullMenu = function() {
-		//TODO Lab 1
-	}
-
-	//Returns all ingredients for all the dishes on the menu.
-	this.getAllIngredients = function() {
-		//TODO Lab 1
-	}
-
-	//Returns the total price of the menu (all the ingredients multiplied by number of guests).
-	this.getTotalMenuPrice = function() {
-		//TODO Lab 1
-	}
-
-	//Adds the passed dish to the menu. If the dish of that type already exists on the menu
-	//it is removed from the menu and the new one added.
-	this.addDishToMenu = function(id) {
-		//TODO Lab 1 
-	}
-
-	//Removes dish from menu
-	this.removeDishFromMenu = function(id) {
-		//TODO Lab 1
-	}
-
-	//function that returns all dishes of specific type (i.e. "starter", "main dish" or "dessert")
-	//you can use the filter argument to filter out the dish by name or ingredient (use for search)
-	//if you don't pass any filter all the dishes will be returned
-	this.getAllDishes = function (type,filter) {
-	  return dishes.filter(function(dish) {
-		var found = true;
-		if(filter){
-			found = false;
-			dish.ingredients.forEach(function(ingredient) {
-				if(ingredient.name.indexOf(filter)!=-1) {
-					found = true;
-				}
-			});
-			if(dish.name.indexOf(filter) != -1)
-			{
-				found = true;
-			}
-		}
-	  	return dish.type == type && found;
-	  });	
-	}
-
-	//function that returns a dish of specific ID
-	this.getDish = function (id) {
-	  for(key in dishes){
-			if(dishes[key].id == id) {
-				return dishes[key];
-			}
-		}
-	}
-
-
-	// the dishes variable contains an array of all the 
-	// dishes in the database. each dish has id, name, type,
-	// image (name of the image file), description and
-	// array of ingredients. Each ingredient has name, 
-	// quantity (a number), price (a number) and unit (string 
-	// defining the unit i.e. "g", "slices", "ml". Unit
-	// can sometimes be empty like in the example of eggs where
-	// you just say "5 eggs" and not "5 pieces of eggs" or anything else.
-	var dishes = [{
+		var dishes = [{
 		'id':1,
 		'name':'French toast',
 		'type':'starter',
@@ -326,5 +243,186 @@ var DinnerModel = function() {
 			}]
 		}
 	];
+ 	
+ 	var activeDish = dishes[1];
+ 	var guest = 6;
+ 	var menu = [];
+ 	var activeType = "starter";
+
+
+ 	var observers = [];
+
+ 	this.addObservers = function(observer){
+ 		observers.push(observer);
+
+ 	}
+
+ 	this.notifyObservers = function(arg){
+ 		for(var i=0; i<observers.length; i++){
+ 			observers[i].update(arg);
+ 		}
+ 	}
+
+ 	this.setActiveDish = function(id){
+ 		activeDish = this.getDish(id);
+ 		this.notifyObservers();
+ 	}
+
+ 	this.getActiveDish = function(){
+ 		return activeDish;
+ 	}
+
+ 	this.setType = function(filter){
+ 		activeType = filter;
+
+ 	}
+
+ 	this.getType = function(){
+ 		return activeType;
+ 	}
+	//TODO Lab 1 implement the data structure that will hold number of guest
+	// and selected dishes for the dinner menu
+
+
+	this.setNumberOfGuests = function(num) {
+		guest = num;
+		this.notifyObservers();
+		//TODO Lab 1
+	}
+	
+	this.getNumberOfGuests = function() {
+		return guest;
+		//TODO Lab 1
+	}
+
+	//Returns the dish that is on the menu for selected type 
+	this.getSelectedDish = function(type) {
+		var selectedDish = [];
+		for(dish in menu){
+			if(menu[dish].type == type){
+				selectedDish.push(menu[dish]);
+			}
+		}
+		return selectedDish[0];
+		//TODO Lab 1
+	}
+
+	//Returns all the dishes on the menu.
+	this.getFullMenu = function() {
+		var fullMenu = [];
+		for(dish in menu){
+			fullMenu.push(menu[dish]);
+		}
+		return fullMenu;
+		//TODO Lab 1
+	}
+
+	//Returns all ingredients for all the dishes on the menu.
+	this.getAllIngredients = function() {
+		var allIngredients = [];
+		for(dish in menu){
+			for(ingredient in menu[dish].ingredients){
+				allIngredients.push(menu[dish].ingredients[ingredient]);
+			}
+		}
+		return allIngredients;
+		//TODO Lab 1
+	}
+
+	this.getDishPrice = function(id){
+		var dishPrice = 0;
+		var dish = this.getDish(id);
+
+		$.each(dish.ingredients, function(i, ingredient){
+			dishPrice += ingredient.price*guest;
+		});
+		return dishPrice;
+	}
+
+	//Returns the total price of the menu (all the ingredients multiplied by number of guests).
+	this.getTotalMenuPrice = function() {
+		var totPrice = 0;
+		for(dish in menu){
+			for(ingredient in menu[dish].ingredients){
+				totPrice += menu[dish].ingredients[ingredient].price;
+			}
+		}
+		totPrice *= guest;
+		return totPrice;
+		//TODO Lab 1
+	}
+
+	//Adds the passed dish to the menu. If the dish of that type already exists on the menu
+	//it is removed from the menu and the new one added.
+	this.addDishToMenu = function(id) {
+		var dish = this.getDish(id)
+		if(dish.type == 'starter'){
+			menu[0] = dish;
+		} else if (dish.type == 'main dish'){
+			menu[1] = dish;
+		} else if (dish.type == 'dessert'){
+			menu[2] = dish;
+		}
+		//menu.push(dish);
+		this.notifyObservers();
+	}
+
+
+	//Removes dish from menu
+	this.removeDishFromMenu = function(id) {
+		menu = $.grep(menu, function(dish){				//grep gör att om ett id != id tas bort
+			return dish.id != id;
+		});
+
+		this.notifyObservers();
+		//TODO Lab 1
+	}
+
+	//function that returns all dishes of specific tye (i.e. "starter", "main dish" or "dessert")
+	//you can use the filter argument to filter out the dish by name or ingredient (use for search)
+	//if you don't pass any filter all the dishes will be returned
+	this.getAllDishes = function (type,filter) {
+	  	return dishes.filter(function(dish) {
+			var found = true;
+			if(filter){
+				found = false;
+				dish.ingredients.forEach(function(ingredient) {
+					if(ingredient.name.indexOf(filter)!=-1) {
+						found = true;
+					}
+				});
+				if(dish.name.indexOf(filter) != -1)
+				{
+					found = true;
+				}
+			}
+	  		return dish.type == type && found;
+	  	});	
+		}
+
+	this.getEveryDish = function () {
+			return dishes;	
+	}
+
+
+	//function that returns a dish of specific ID
+	this.getDish = function (id) {
+	  for(key in dishes){
+			if(dishes[key].id == id) {
+				return dishes[key];
+			}
+		}
+	}
+
+	// the dishes variable contains an array of all the 
+	// dishes in the database. each dish has id, name, type,
+	// image (name of the image file), description and
+	// array of ingredients. Each ingredient has name, 
+	// quantity (a number), price (a number) and unit (string 
+	// defining the unit i.e. "g", "slices", "ml". Unit
+	// can sometimes be empty like in the example of eggs where
+	// you just say "5 eggs" and not "5 pieces of eggs" or anything else.
+
 
 }
+

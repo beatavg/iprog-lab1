@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>A Web Page</title>
+
+    <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css">
+  <style>
+  body {
+    font-family: 'Comic sans ms';
+  }
+</style>
+  </head>
+  <body> 
+  <div class="jumbotron text-center">
+    <p></p>
+    <h1>Dinner planner</h1>
+  </div>
+  <div class="col-md-6">
+    <div class="container text-left" id="leftPanel">
+      <h4>My Dinner: <span id="numberOfGuests"></span> people</h4>
+    </div>
+    </div>
+    <div class="col-md-6">
+    <div class="text-right">
+    <button type="button" class="btn btn-warning btn-arrow-left">Go back and edit dinner</button>
+    </div>
+    </div>
+    <div class="col-md-12">
+      <hr></hr>
+    </div>
+    </div>
+    <div class="row" id="imagecolumn">
+    <!--<img src="images/toast.jpg" class="img-responsive" alt="toast">
+    </div>
+    <div class="col-md-4" id='headercolumn'>
+    <font size="5">TOAST</font>
+    <p></p>
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+    </div>
+-->
+
+    <div class="col-md-5" id='prepcolumn'>
+    <!--  <p></p>
+    <font size="3">PREPARATION</font>
+    <p></p>
+     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+     <p></p>
+     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip</p>
+     <br></br>
+    </div>
+       <div class="col-md-2">
+    <img src="images/icecream.jpg" class="img-responsive" alt="icecream">
+    </div>
+    <div class="col-md-4">
+    <font size="5">ICECREAM</font>
+    <p></p>
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+    </div>
+    <div class="col-md-5">
+      <p></p>
+    <font size="3">PREPARATION</font>
+    <p></p>
+     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+     <p></p>
+     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip</p>
+    </div>
+-->
+    <script src="https://code.jquery.com/jquery.js"></script>
+    <!-- Bootstrap JavaScript, needed if you want for instance tabs, models, popovers etc. -->
+    <script src="http://netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
+
+  <!-- The application JavaScript code -->
+  <script src="app.js"></script>
+  <script src="dinnerModel.js"></script>
+  <script src="View/sidebarView.js"></script>
+  <script src="View/imageView.js"></script>
+  <script src="View/ingredientsView.js"></script>
+  <script src="View/buttonsidebarView.js"></script>
+  <script src="View/overView.js"></script>
+  <script src="View/printoutView.js"></script>
+
+  </body>
+  </html>
+
+

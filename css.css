@@ -1,0 +1,68 @@
+body {
+  font: 400 18px Optima, sans-serif;
+  line-height: 1.8;
+  color: #434A54;
+  
+}
+
+h1{
+	margin-top: 50px;
+	color: #434A54;
+	font-weight: 600;
+}
+
+
+#header {
+	height: 150px;
+	background-color: rgba(218, 217, 219, 0.8);
+}
+
+#overView {
+	font-weight: 600;
+	height: 100px;
+	background-color: #edc7a6;
+}
+
+#introduction {
+	color: #434A54;
+	height: 220px;
+	width: 650px;
+	background-color: rgba(218, 217, 219, 0.8);
+
+}
+
+hr {
+	border-color: #434A54;
+}
+
+#dishTable {
+	margin-top: 50px; 
+}
+
+#thead {
+	margin-top: 15px; 
+	background-color: #a8a8a8;
+}
+
+#td1 {
+	color:#990000;
+}
+
+h4 {
+	font-weight: 600;
+}
+
+#searchHeader {
+	background-color: #edc7a6;
+}
+
+#printButton {
+	text-align: center;
+
+
+}
+
+
+
+
+

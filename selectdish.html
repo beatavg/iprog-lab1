@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>A Web Page</title>
+
+    <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css">
+  <style>
+  body {
+    font-family: 'Comic sans ms';
+  }
+</style>
+  </head>
+  <body> 
+  <div class="jumbotron text-center">
+    <h1>Dinner planner</h1>
+  </div>
+
+
+    <div class="text-left">
+      <div class="col-md-3" id="leftPanel">
+        <h4><strong>My Dinner</strong></h4>
+
+        People: <span id="numberOfGuests"></span>
+        <div class="btn-group-vertical">
+              <button id="plusGuest" class="btn"><span class="glyphicon glyphicon-chevron-up"></span></button>
+        <button id="minusGuest" class="btn"><span class="glyphicon glyphicon-chevron-down"></span></button>
+        </div>
+        
+        <div id="selectedDishes">
+          <table class="table" style='margin-top: 20px;' id="dishTable">
+            <thead style='background-color: #cccccc;'>
+              <tr>
+                <th>Dish Name</th>
+                <th>Cost</th>
+              </tr>
+            </thead>
+            <tbody>
+            </tbody>
+            <tfoot>
+              <tr>
+              <td></td>
+              <td style="color:#990000;">SEK<span id="totalCost"></span></td>
+              <td></td>
+              </tr>
+            </tfoot>
+          </table>
+        </div>
+
+        <div class="text-center">
+          <button type="button" class="btn btn-default" id="confirmDinner">Confirm Dinner</button>
+        </div>
+      </div>
+    </div><!--End sidebarView-->
+
+    <div class="col-md-9">
+          <h4> FIND A DISH </h4>
+          <form class="row">
+            <div class="col-lg-6">
+              <div class="input-group">
+              <input type="text" class="form-control" placeholder="Enter key words">
+              <span class="input-group-btn">
+              <button class="btn btn-warning" type="button">Search</button>
+            </span>
+          </div>
+        </div>
+        <div class="dropdown">
+          <button class="btn btn-default dropdown toggle" type="button" id="dropdownmenu" data-toggle="dropdown" aria-expanded="true">
+            All
+            <span class="caret"></span>
+          </button>
+          <ul class="dropdown-menu center" role="menu" aria-labelledby="dropdownmenu">
+                    <li role="presentation"><a role="manuitem" tabindex="-1" href="#">Main Course</a></li>
+                    <li role="presentation"><a role="manuitem" tabindex="-1" href="#">Side Dish/<a></li>
+                    <li role="presentation"><a role="manuitem" tabindex="-1" href="#">Dessert</a></li>
+                    <li role="presentation"><a role="manuitem" tabindex="-1" href="#">Appetizers</a></li>
+                    <li role="presentation"><a role="manuitem" tabindex="-1" href="#">...</a></li>
+                  </ul>
+          <hr></hr>
+          <br></br>
+                </div>
+              </div>
+            </div>
+
+
+      <div class="row" id="searchresults">
+      <!--
+        <div class="col-md-2">
+          <div class="thumbnail">
+          <img src="images/toast.jpg" class="img-responsive" alt="toast">
+          <p><a class="btn btn-default btn-lg btn-block" role="button" style="align-center">Toast</a></p>
+          </div>
+        </div>
+
+
+
+        <div class="col-md-2">    
+          <div class="thumbnail">
+          <img src="images/sourdough.jpg" class="img-responsive" alt="Responsive image">
+          <p><a class="btn btn-default btn-lg btn-block" role="button" style="align-center">Sourdough</a></p>
+          </div>
+        </div>
+
+        <div class="col-md-2">    
+          <div class="thumbnail">
+          <img src="images/meatballs.jpg" class="img-responsive" alt="Responsive image">
+          <p><a class="btn btn-default btn-lg btn-block" role="button" style="align-center">Meatballs</a></p>
+          </div>
+        </div>
+
+        <div class="col-md-2">    
+          <div class="thumbnail">
+          <img src="images/icecream.jpg" class="img-responsive" alt="Responsive image">
+          <p><a class="btn btn-default btn-lg btn-block" role="button" style="align-center">Icecream</a></p> </div>
+        </div>
+
+          </div><! /.row -->
+
+
+
+    <script src="https://code.jquery.com/jquery.js"></script>
+    <!-- Bootstrap JavaScript, needed if you want for instance tabs, models, popovers etc. -->
+    <script src="http://netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
+
+  <!-- The application JavaScript code -->
+  <script src="app.js"></script>
+  <script src="dinnerModel.js"></script>
+  <script src="View/sidebarView.js"></script>
+  <script src="View/imageView.js"></script>
+  <script src="View/ingredientsView.js"></script>
+  <script src="View/buttonsidebarView.js"></script>
+  <script src="View/overView.js"></script>
+  <script src="View/printoutView.js"></script>
+  
+
+      
+
+</div>
+</body>
+</html>
+ 
